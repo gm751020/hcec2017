@@ -2384,9 +2384,65 @@ section[id]{scroll-margin-top:132px;}
 @media(max-width:760px){.service-grid{grid-template-columns:1fr!important}.service-card{padding:30px 26px}.org-second-row{grid-template-columns:1fr;gap:34px;max-width:420px}.org-second-row:before{display:none}.org-second-row>.org-box-v2:before{top:-18px}.org-second-row>.org-box-v2:first-child:before{display:none}.org-connector-v2{display:none}.org-dept-grid-v2{grid-template-columns:1fr;margin-top:34px}.core-value-flow{grid-template-columns:1fr 1fr;gap:12px}.core-value-arrow{display:none}}
 @media(max-width:640px){.header-symbol{width:38px;height:38px}.header-wordmark{height:30px!important;max-width:190px!important}.about-system{grid-template-columns:1fr}.about-system-card{min-height:0;padding:23px 20px}.core-value-flow{padding:18px 12px}.organization-v2{padding:38px 16px 32px}.org-ceo-v2{min-width:0;width:min(100%,300px)}}
 @media(max-width:390px){.header-brand{gap:6px}.header-symbol{width:34px;height:34px}.header-wordmark{height:27px!important;max-width:160px!important}.about-system-card{gap:12px}.about-system-icon{width:46px;height:46px;flex-basis:46px}.core-value-item p{font-size:.72rem}}
+
+
+/* =========================================================
+   Page switching mode
+   기존 디자인과 콘텐츠를 유지하고 선택한 메뉴의 섹션만 표시
+   ========================================================= */
+body.page-mode .page-panel{
+  display:none;
+}
+
+body.page-mode .page-panel.is-page-active{
+  display:block;
+  animation:page-switch-fade .28s ease both;
+}
+
+/* 홈 히어로의 기존 flex 레이아웃 유지 */
+body.page-mode #home.page-panel.is-page-active{
+  display:flex;
+}
+
+/* 각 내부 페이지는 고정 헤더 아래에서 시작 */
+body.page-mode .page-panel.section.is-page-active{
+  min-height:calc(100vh - 118px);
+  padding-top:max(var(--section-space, 112px), 148px);
+}
+
+/* 홈에서만 주소·전화·센터장 정보 바 표시 */
+body.page-mode .info-bar.page-panel.is-page-active{
+  display:block;
+}
+
+@keyframes page-switch-fade{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media (max-width:900px){
+  body.page-mode .page-panel.section.is-page-active{
+    min-height:calc(100vh - 76px);
+    padding-top:112px;
+  }
+}
+
+@media (max-width:640px){
+  body.page-mode .page-panel.section.is-page-active{
+    min-height:calc(100vh - 62px);
+    padding-top:96px;
+  }
+}
+
 </style>
 </head>
-<body>
+<body class="page-mode">
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="siteHeader">
 <div class="header-inner">
@@ -2407,7 +2463,7 @@ section[id]{scroll-margin-top:132px;}
 </div>
 </header>
 <!-- ================= HERO ================= -->
-<section class="hero" id="home">
+<section class="hero page-panel is-page-active" data-page="home" id="home">
 <div aria-hidden="true" class="hero-blobs">
 <span class="blob blob-teal"></span>
 <span class="blob blob-sky"></span>
@@ -2458,7 +2514,7 @@ section[id]{scroll-margin-top:132px;}
 <div aria-hidden="true" class="scroll-cue"><span></span></div>
 </section>
 <!-- ================= INFO BAR ================= -->
-<section class="info-bar">
+<section class="info-bar page-panel is-page-active" data-page="home">
 <div class="info-bar-inner">
 <div class="info-item">
 <span aria-hidden="true" class="info-icon">
@@ -2485,7 +2541,7 @@ section[id]{scroll-margin-top:132px;}
 
 
 <!-- ================= ABOUT ================= -->
-<section class="section" id="about">
+<section class="section page-panel" data-page="about" id="about">
 <div class="section-inner"><p class="eyebrow eyebrow-dark">About Us</p><h2 class="section-title">회사소개</h2>
 <p class="section-lead about-lead">개인의 가능성을 발견하고 조직의 지속 가능한 성장을 연결합니다.</p>
 <div aria-label="미션, 비전, 교육전략" class="about-system">
@@ -2643,7 +2699,7 @@ section[id]{scroll-margin-top:132px;}
 
 </section>
 <!-- ================= BUSINESS / SERVICES ================= -->
-<section class="section section-alt" id="business">
+<section class="section section-alt page-panel" data-page="business" id="business">
 <div class="section-inner">
 <p class="eyebrow eyebrow-dark">Our Services</p>
 <h2 class="section-title">사업영역</h2>
@@ -2701,7 +2757,7 @@ section[id]{scroll-margin-top:132px;}
 </div>
 </section>
 <!-- ================= PROGRAMS ================= -->
-<section class="section" id="programs">
+<section class="section page-panel" data-page="programs" id="programs">
 <div class="section-inner">
 <p class="eyebrow eyebrow-dark">Programs</p>
 <h2 class="section-title">프로그램</h2>
@@ -2776,7 +2832,7 @@ section[id]{scroll-margin-top:132px;}
 </section>
 <!-- ================= CONTACT ================= -->
 <!-- ================= NOTICES ================= -->
-<section class="section section-alt" id="notices">
+<section class="section section-alt page-panel" data-page="notices" id="notices">
 <div class="section-inner">
 <p class="eyebrow eyebrow-dark">Notice</p>
 <h2 class="section-title">공지사항</h2>
@@ -2793,7 +2849,7 @@ section[id]{scroll-margin-top:132px;}
 </div>
 </section>
 <!-- ================= EDUCATION SCHEDULE ================= -->
-<section class="section section-alt" id="schedule">
+<section class="section section-alt page-panel" data-page="schedule" id="schedule">
 <div class="section-inner">
 <p class="eyebrow eyebrow-dark">Education Schedule</p>
 <h2 class="section-title">
@@ -2808,7 +2864,7 @@ section[id]{scroll-margin-top:132px;}
 </div>
 </div>
 </section>
-<section class="section section-alt" id="contact">
+<section class="section section-alt page-panel" data-page="contact" id="contact">
 <div class="section-inner">
 <p class="eyebrow eyebrow-dark">Contact</p>
 <h2 class="section-title">강의문의</h2>
@@ -2911,7 +2967,7 @@ section[id]{scroll-margin-top:132px;}
 </div>
 </section>
 <!-- ================= INSTRUCTOR APPLICATION ================= -->
-<section class="section" id="instructor">
+<section class="section page-panel" data-page="instructor" id="instructor">
 <div class="section-inner">
 <p class="eyebrow eyebrow-dark">Instructor Network</p>
 <h2 class="section-title">강사등록</h2>
@@ -3058,17 +3114,31 @@ section[id]{scroll-margin-top:132px;}
   }
 
   /* ---------------------------------------------------------
-     Active navigation: highlight the section in view
+     Page navigation
+     - 메뉴를 클릭하면 해당 섹션만 표시
+     - 주소 해시, 뒤로가기, 앞으로가기 지원
+     - 기존 디자인과 콘텐츠는 변경하지 않음
   --------------------------------------------------------- */
-  const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
-  const navSections = navLinks
-    .map((link) => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
+  const pageIds = [
+    'home',
+    'about',
+    'business',
+    'programs',
+    'notices',
+    'schedule',
+    'contact',
+    'instructor'
+  ];
 
-  const setActiveNav = (sectionId) => {
+  const navLinks = Array.from(
+    document.querySelectorAll('.nav-link[href^="#"]')
+  );
+
+  const setActiveNav = (pageId) => {
     navLinks.forEach((link) => {
-      const isActive = link.getAttribute('href') === `#${sectionId}`;
+      const isActive = link.getAttribute('href') === `#${pageId}`;
       link.classList.toggle('is-active', isActive);
+
       if (isActive) {
         link.setAttribute('aria-current', 'page');
       } else {
@@ -3077,27 +3147,67 @@ section[id]{scroll-margin-top:132px;}
     });
   };
 
-  const updateActiveNav = () => {
-    const headerOffset = (header ? header.offsetHeight : 70) + 48;
-    let currentId = navSections[0] ? navSections[0].id : 'home';
-
-    navSections.forEach((section) => {
-      if (window.scrollY + headerOffset >= section.offsetTop) {
-        currentId = section.id;
-      }
-    });
-
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-      const lastSection = navSections[navSections.length - 1];
-      if (lastSection) currentId = lastSection.id;
-    }
-
-    setActiveNav(currentId);
+  const activateRevealItems = (pageId) => {
+    document
+      .querySelectorAll(`[data-page="${pageId}"] .reveal`)
+      .forEach((item) => item.classList.add('is-visible'));
   };
 
-  updateActiveNav();
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  window.addEventListener('resize', updateActiveNav);
+  const showPage = (requestedPage, options = {}) => {
+    const pageId = pageIds.includes(requestedPage) ? requestedPage : 'home';
+
+    document.querySelectorAll('.page-panel').forEach((panel) => {
+      const isActive = panel.dataset.page === pageId;
+      panel.classList.toggle('is-page-active', isActive);
+      panel.setAttribute('aria-hidden', String(!isActive));
+    });
+
+    setActiveNav(pageId);
+
+    if (mainNav) mainNav.classList.remove('is-open');
+    if (navToggle) {
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (!options.preserveScroll) {
+      window.scrollTo({ top: 0, behavior: options.instant ? 'auto' : 'smooth' });
+    }
+
+    window.requestAnimationFrame(() => activateRevealItems(pageId));
+  };
+
+  const getPageFromHash = () => {
+    const hash = window.location.hash.replace('#', '').trim();
+    return pageIds.includes(hash) ? hash : 'home';
+  };
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const pageId = link.getAttribute('href').slice(1);
+    if (!pageIds.includes(pageId)) return;
+
+    event.preventDefault();
+
+    const nextHash = `#${pageId}`;
+    if (window.location.hash !== nextHash) {
+      window.history.pushState({ page: pageId }, '', nextHash);
+    }
+
+    showPage(pageId);
+  });
+
+  window.addEventListener('popstate', () => {
+    showPage(getPageFromHash(), { instant: true });
+  });
+
+  window.addEventListener('hashchange', () => {
+    showPage(getPageFromHash(), { instant: true });
+  });
+
+  showPage(getPageFromHash(), { instant: true });
 
   /* ---------------------------------------------------------
      Scroll reveal for section content
@@ -3271,7 +3381,7 @@ section[id]{scroll-margin-top:132px;}
       button.addEventListener('click', () => {
         noticePage = Number(button.dataset.page);
         renderNotices();
-        document.getElementById('notices')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
   };
@@ -3286,3 +3396,4 @@ section[id]{scroll-margin-top:132px;}
 </script>
 </body>
 </html>
+
