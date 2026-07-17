@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -2539,13 +2537,14 @@ body.page-mode .info-bar.page-panel.is-page-active{
 }
 .program-gallery-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:12px;
 }
 .program-gallery-card{
+  min-width:0;
   overflow:hidden;
   border:1px solid var(--line);
-  border-radius:18px;
+  border-radius:14px;
   background:#fff;
   box-shadow:0 14px 30px -24px rgba(38,52,74,.32);
   transition:transform .3s ease,box-shadow .3s ease;
@@ -2564,14 +2563,15 @@ body.page-mode .info-bar.page-panel.is-page-active{
 }
 .program-gallery-image-wrap{
   position:relative;
-  aspect-ratio:4/3;
+  aspect-ratio:3/4;
   overflow:hidden;
-  background:var(--navy-tint);
+  background:#fff;
 }
 .program-gallery-image{
   width:100%;
   height:100%;
-  object-fit:cover;
+  padding:6px;
+  object-fit:contain;
   transition:transform .4s ease;
 }
 .program-gallery-card:hover .program-gallery-image{
@@ -2594,12 +2594,13 @@ body.page-mode .info-bar.page-panel.is-page-active{
 }
 .program-gallery-title{
   display:block;
-  min-height:62px;
-  padding:17px 16px;
+  min-height:48px;
+  padding:12px 8px;
   color:var(--navy-deep);
-  font-size:.95rem;
+  font-size:.78rem;
   font-weight:700;
-  line-height:1.45;
+  line-height:1.4;
+  text-align:center;
   word-break:keep-all;
 }
 .program-gallery-pagination{
@@ -2644,27 +2645,35 @@ body.page-mode .info-bar.page-panel.is-page-active{
 .program-lightbox[hidden]{display:none;}
 .program-lightbox-dialog{
   position:relative;
-  width:min(94vw,1100px);
-  max-height:94vh;
-  overflow:auto;
-  border-radius:20px;
-  background:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:min(96vw,1200px);
+  max-height:96vh;
+  overflow:hidden;
+  border-radius:18px;
+  background:#111827;
   box-shadow:0 28px 70px rgba(0,0,0,.35);
 }
 .program-lightbox-image{
   display:block;
   width:auto;
-  max-width:100%;
+  max-width:96vw;
   height:auto;
-  max-height:86vh;
+  max-height:88vh;
   margin:0 auto;
   object-fit:contain;
   background:#111827;
 }
 .program-lightbox-caption{
-  padding:18px 64px 20px 22px;
-  color:var(--navy-deep);
+  width:100%;
+  padding:12px 60px 14px 18px;
+  color:#fff;
+  font-size:.9rem;
   font-weight:700;
+  text-align:center;
+  background:rgba(17,24,39,.96);
 }
 .program-lightbox-close{
   position:absolute;
@@ -2681,12 +2690,15 @@ body.page-mode .info-bar.page-panel.is-page-active{
   line-height:1;
   box-shadow:0 8px 24px rgba(0,0,0,.2);
 }
-@media(max-width:900px){
+@media(max-width:1100px){
+  .program-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(max-width:760px){
   .program-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media(max-width:640px){
   .program-gallery-section{margin-bottom:44px;}
-  .program-gallery-grid{grid-template-columns:1fr;}
+  .program-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .program-gallery-title{min-height:0;}
   .program-lightbox{padding:12px;}
   .program-lightbox-dialog{border-radius:14px;}
@@ -3675,7 +3687,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 
 
   /* ---------------------------------------------------------
-     Program gallery — 6 images per page + automatic pagination
+     Program gallery — 6 images per page, one desktop row + automatic pagination
      새 이미지를 올린 뒤 아래 배열에 한 줄씩 추가하세요.
      파일명과 확장자(.jpg/.png)는 GitHub images 폴더와 정확히 같아야 합니다.
   --------------------------------------------------------- */
@@ -3684,8 +3696,12 @@ body.page-mode .info-bar.page-panel.is-page-active{
     { src: 'images/KakaoTalk_002.png', title: '교육 프로그램 현장 02' },
     { src: 'images/KakaoTalk_003.png', title: '교육 프로그램 현장 03' },
     { src: 'images/KakaoTalk_004.png', title: '교육 프로그램 현장 04' },
-    { src: 'images/KakaoTalk_005.png', title: '교육 프로그램 현장 05' },
-    { src: 'images/KakaoTalk_006.png', title: '교육 프로그램 현장 06' }
+    { src: 'images/005.png', title: '교육 프로그램 현장 05' },
+    { src: 'images/006.png', title: '교육 프로그램 현장 06' },
+    { src: 'images/007.png', title: '교육 프로그램 현장 07' },
+    { src: 'images/008.png', title: '교육 프로그램 현장 08' },
+    { src: 'images/009.png', title: '교육 프로그램 현장 09' },
+    { src: 'images/010.png', title: '교육 프로그램 현장 10' },
   ];
 
   const programGalleryGrid = document.getElementById('programGalleryGrid');
