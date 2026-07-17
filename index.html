@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -2512,7 +2514,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 
 
 /* =========================================================
-   Program image gallery — 4 items per page + lightbox
+   Program image gallery — 6 items per page + lightbox
    images 폴더에 이미지를 올리고 아래 JS의 programGalleryData에 추가하면
    페이지 번호가 1, 2, 3... 자동으로 생성됩니다.
    ========================================================= */
@@ -2537,7 +2539,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 }
 .program-gallery-grid{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
 .program-gallery-card{
@@ -2642,16 +2644,20 @@ body.page-mode .info-bar.page-panel.is-page-active{
 .program-lightbox[hidden]{display:none;}
 .program-lightbox-dialog{
   position:relative;
-  width:min(100%,1100px);
-  max-height:92vh;
+  width:min(94vw,1100px);
+  max-height:94vh;
   overflow:auto;
   border-radius:20px;
   background:#fff;
   box-shadow:0 28px 70px rgba(0,0,0,.35);
 }
 .program-lightbox-image{
-  width:100%;
-  max-height:78vh;
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:86vh;
+  margin:0 auto;
   object-fit:contain;
   background:#111827;
 }
@@ -3151,7 +3157,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 <input name="_subject" type="hidden" value="[휴먼커넥트에듀센터] 새로운 교육 문의가 접수되었습니다"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://gm751020.github.io/hcec2017/?sent=contact#contact"/>
+<input name="_next" type="hidden" value="https://www.hcec.co.kr/?sent=contact#contact"/>
 <input name="접수구분" type="hidden" value="교육 문의"/>
 <h3 class="form-subhead">기관 정보</h3>
 <div class="form-grid">
@@ -3240,7 +3246,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 <span aria-hidden="true">→</span>
 </a>
 </div>
-<p class="form-success" hidden="" id="contactSuccess">이메일 전송 완료. 확인 후 빠르게 연락드리겠습니다.</p>
+<p class="form-success" hidden="" id="contactSuccess">메일이 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.</p>
 </form>
 </div>
 </section>
@@ -3257,7 +3263,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 <input name="_subject" type="hidden" value="[휴먼커넥트에듀센터] 새로운 협력 강사 신청이 접수되었습니다"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://gm751020.github.io/hcec2017/?sent=instructor#instructor"/>
+<input name="_next" type="hidden" value="https://www.hcec.co.kr/?sent=instructor#instructor"/>
 <input name="접수구분" type="hidden" value="협력 강사 신청"/>
 <div class="form-grid">
 <div class="form-field">
@@ -3325,7 +3331,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 <span aria-hidden="true">→</span>
 </a>
 </div>
-<p class="form-success" hidden="" id="instructorSuccess">협력 강사 신청 메일이 전송되었습니다. 검토 후 연락드리겠습니다.</p>
+<p class="form-success" hidden="" id="instructorSuccess">메일이 접수되었습니다. 검토 후 연락드리겠습니다.</p>
 </form>
 </div>
 </section>
@@ -3669,7 +3675,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
 
 
   /* ---------------------------------------------------------
-     Program gallery — 4 images per page + automatic pagination
+     Program gallery — 6 images per page + automatic pagination
      새 이미지를 올린 뒤 아래 배열에 한 줄씩 추가하세요.
      파일명과 확장자(.jpg/.png)는 GitHub images 폴더와 정확히 같아야 합니다.
   --------------------------------------------------------- */
@@ -3677,7 +3683,9 @@ body.page-mode .info-bar.page-panel.is-page-active{
     { src: 'images/KakaoTalk_001.png', title: '교육 프로그램 현장 01' },
     { src: 'images/KakaoTalk_002.png', title: '교육 프로그램 현장 02' },
     { src: 'images/KakaoTalk_003.png', title: '교육 프로그램 현장 03' },
-    { src: 'images/KakaoTalk_004.png', title: '교육 프로그램 현장 04' }
+    { src: 'images/KakaoTalk_004.png', title: '교육 프로그램 현장 04' },
+    { src: 'images/KakaoTalk_005.png', title: '교육 프로그램 현장 05' },
+    { src: 'images/KakaoTalk_006.png', title: '교육 프로그램 현장 06' }
   ];
 
   const programGalleryGrid = document.getElementById('programGalleryGrid');
@@ -3686,7 +3694,7 @@ body.page-mode .info-bar.page-panel.is-page-active{
   const programLightboxImage = document.getElementById('programLightboxImage');
   const programLightboxCaption = document.getElementById('programLightboxCaption');
   const programLightboxClose = document.getElementById('programLightboxClose');
-  const programItemsPerPage = 4;
+  const programItemsPerPage = 6;
   let programGalleryPage = 1;
 
   const openProgramLightbox = (item) => {
